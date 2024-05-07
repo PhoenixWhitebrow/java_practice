@@ -10,9 +10,9 @@ public class HelloWorld {
 		Square s = new Square();
 		s.l = 8;
 		System.out.println("Площадь квадрата со стороной " + s.l + " = " + area(s));
-		
+
 		Rectangle r = new Rectangle(6,7);
-		System.out.println("Площадь прямоугольника со сторонами " + r.a + " и " + r.b + " = " + area(r));
+		System.out.println("Площадь прямоугольника со сторонами " + r.a + " и " + r.b + " = " + r.area());
 	}
 
 	public static void hello(String name) {
@@ -21,10 +21,6 @@ public class HelloWorld {
 
 	public static double area(Square s) {
 		return s.l * s.l;
-	}
-
-	public static double area(Rectangle r) {
-		return r.a * r.b;
 	}
 
 	public static void mathematicsExample() {
