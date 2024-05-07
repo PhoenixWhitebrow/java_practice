@@ -22,3 +22,7 @@ gradle-app.setting
 
 # Ignore macOS Desktop Services Store file
 **/.DS_Store
+
+# Ignore Idea IDE workspace.xml and misc.xml
+.idea/workspace.xml
+.idea/misc.xml
