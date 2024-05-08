@@ -1,4 +1,22 @@
 apply plugin: 'java'
 apply plugin: 'application'
+
 //noinspection GroovyUnusedAssignment
-mainClassName = "my.first.pak.DistanceXY"
+mainClassName = "my.first.pak.HelloWorld"
+
+repositories {
+    // connects a Maven Central repository
+    mavenCentral()
+}
+
+dependencies {
+    // adds TestNG library with it's dependencies
+    implementation 'org.testng:testng:7.10.2'
+    // resolves a "SLF4J: Failed to load class "org.slf4j.impl.StaticLoggerBinder"." error
+    implementation 'org.slf4j:slf4j-simple:2.0.13'
+}
+
+test {
+    // resolves a "No matching tests found in any candidate test task." error
+    useTestNG()
+}
