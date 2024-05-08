@@ -12,7 +12,7 @@ repositories {
 dependencies {
     // adds TestNG library with it's dependencies
     implementation 'org.testng:testng:7.10.2'
-    // resolves a "SLF4J: Failed to load class "org.slf4j.impl.StaticLoggerBinder"." error
+    // resolves an "SLF4J: Failed to load class "org.slf4j.impl.StaticLoggerBinder"." error
     implementation 'org.slf4j:slf4j-simple:2.0.13'
 }
 
