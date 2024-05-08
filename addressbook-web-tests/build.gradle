@@ -9,11 +9,8 @@ repositories {
 dependencies {
     // adds JUnit library with it's dependencies to be able to use with Selenium IDE
     testImplementation 'junit:junit:4.12'
-    // adds Selenium libraries
-    implementation 'org.seleniumhq.selenium:selenium-devtools-v124:4.20.0'
-    implementation 'org.seleniumhq.selenium:selenium-chrome-driver:4.20.0'
-    implementation 'org.seleniumhq.selenium:selenium-firefox-driver:4.20.0'
-    implementation 'org.seleniumhq.selenium:selenium-support:4.20.0'
+    // adds Selenium library
+    implementation 'org.seleniumhq.selenium:selenium-java:4.20.0'
 }
 
 test {
