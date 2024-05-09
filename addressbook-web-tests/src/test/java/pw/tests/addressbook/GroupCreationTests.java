@@ -25,33 +25,52 @@ public class GroupCreationTests {
     driver = new ChromeDriver();
     js = (JavascriptExecutor) driver;
       Map<String, Object> vars = new HashMap<String, Object>();
-    //// Deprecated in Selenium 4
-    // driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
-    //// Resolve deprecated:
+    // Timeouts
     Wait<WebDriver> wait = new FluentWait<WebDriver>(driver)
             .withTimeout(Duration.ofSeconds(30))
             .pollingEvery(Duration.ofSeconds(5))
             .ignoring(NoSuchElementException.class);
-    // Login to addressbook
+    // Open addressbook
     driver.get("http://ab.localhost/index.php");
+    login("admin", "secret");
+  }
+
+  @Test
+  public void testGroupCreation() {
+    goToGroups();
+    initGruopCreation();
+    fillGroupForm("test1", "test2", "test3");
+    submitGroupForm();
+    goToGroups();
+  }
+
+  private void login(String username, String password) {
     driver.manage().window().setSize(new Dimension(1680, 1025));
-    driver.findElement(By.xpath("//*[@id=\"LoginForm\"]/input[1]")).sendKeys("admin");
-    driver.findElement(By.xpath("//*[@id=\"LoginForm\"]/input[2]")).sendKeys("secret");
+    driver.findElement(By.xpath("//*[@id=\"LoginForm\"]/input[1]")).sendKeys(username);
+    driver.findElement(By.xpath("//*[@id=\"LoginForm\"]/input[2]")).sendKeys(password);
     driver.findElement(By.xpath("//*[@id=\"LoginForm\"]/input[3]")).click();
+  }
+
+  private void goToGroups() {
+    driver.findElement(By.linkText("groups")).click();
+  }
+
+  private void initGruopCreation() {
+    driver.findElement(By.xpath("//*[@id=\"content\"]/form/input[1]")).click();
+  }
+
+  private void fillGroupForm(String name, String header, String footer) {
+    driver.findElement(By.xpath("//*[@id=\"content\"]/form/input[1]")).sendKeys(name);
+    driver.findElement(By.xpath("//*[@id=\"content\"]/form/textarea[1]")).sendKeys(header);
+    driver.findElement(By.xpath("//*[@id=\"content\"]/form/textarea[2]")).sendKeys(footer);
+  }
+
+  private void submitGroupForm() {
+    driver.findElement(By.xpath("//*[@id=\"content\"]/form/input[2]")).click();
   }
 
   @After
   public void tearDown() {
     driver.quit();
-  }
-
-  @Test
-  public void testCreateNewGroup() {
-    driver.findElement(By.linkText("groups")).click();
-    driver.findElement(By.xpath("//*[@id=\"content\"]/form/input[1]")).click();
-    driver.findElement(By.xpath("//*[@id=\"content\"]/form/input[1]")).sendKeys("test1");
-    driver.findElement(By.xpath("//*[@id=\"content\"]/form/textarea[1]")).sendKeys("test2");
-    driver.findElement(By.xpath("//*[@id=\"content\"]/form/textarea[2]")).sendKeys("test3");
-    driver.findElement(By.xpath("//*[@id=\"content\"]/form/input[2]")).click();
   }
 }
