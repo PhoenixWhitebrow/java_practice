@@ -17,15 +17,14 @@ import java.util.*;
 
 public class GroupCreationTests {
   private WebDriver driver;
-  private Map<String, Object> vars;
-  JavascriptExecutor js;
+    JavascriptExecutor js;
 
   @Before
   public void setUp() {
     // Browser driver
     driver = new ChromeDriver();
     js = (JavascriptExecutor) driver;
-    vars = new HashMap<String, Object>();
+      Map<String, Object> vars = new HashMap<String, Object>();
     //// Deprecated in Selenium 4
     // driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
     //// Resolve deprecated:
@@ -36,8 +35,8 @@ public class GroupCreationTests {
     // Login to addressbook
     driver.get("http://ab.localhost/index.php");
     driver.manage().window().setSize(new Dimension(1680, 1025));
-    driver.findElement(By.name("user")).sendKeys("admin");
-    driver.findElement(By.name("pass")).sendKeys("secret");
+    driver.findElement(By.xpath("//*[@id=\"LoginForm\"]/input[1]")).sendKeys("admin");
+    driver.findElement(By.xpath("//*[@id=\"LoginForm\"]/input[2]")).sendKeys("secret");
     driver.findElement(By.xpath("//*[@id=\"LoginForm\"]/input[3]")).click();
   }
 
@@ -49,10 +48,10 @@ public class GroupCreationTests {
   @Test
   public void testCreateNewGroup() {
     driver.findElement(By.linkText("groups")).click();
-    driver.findElement(By.name("new")).click();
-    driver.findElement(By.name("group_name")).sendKeys("test1");
-    driver.findElement(By.name("group_header")).sendKeys("test2");
-    driver.findElement(By.name("group_footer")).sendKeys("test3");
-    driver.findElement(By.name("submit")).click();
+    driver.findElement(By.xpath("//*[@id=\"content\"]/form/input[1]")).click();
+    driver.findElement(By.xpath("//*[@id=\"content\"]/form/input[1]")).sendKeys("test1");
+    driver.findElement(By.xpath("//*[@id=\"content\"]/form/textarea[1]")).sendKeys("test2");
+    driver.findElement(By.xpath("//*[@id=\"content\"]/form/textarea[2]")).sendKeys("test3");
+    driver.findElement(By.xpath("//*[@id=\"content\"]/form/input[2]")).click();
   }
 }
