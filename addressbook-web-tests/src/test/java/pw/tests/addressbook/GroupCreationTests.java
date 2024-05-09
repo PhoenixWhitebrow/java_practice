@@ -39,14 +39,18 @@ public class GroupCreationTests {
   public void testGroupCreation() {
     goToGroups();
     initGruopCreation();
-    fillGroupForm("test1", "test2", "test3");
+    fillGroupForm(new GroupData("test1", "test2", "test3"));
     submitGroupForm();
     goToGroups();
   }
 
   private void login(String username, String password) {
-    driver.manage().window().setSize(new Dimension(1680, 1025));
+    driver.manage().window().setSize(new Dimension(800, 600));
+    driver.findElement(By.xpath("//*[@id=\"LoginForm\"]/input[1]")).click();
+    driver.findElement(By.xpath("//*[@id=\"LoginForm\"]/input[1]")).clear();
     driver.findElement(By.xpath("//*[@id=\"LoginForm\"]/input[1]")).sendKeys(username);
+    driver.findElement(By.xpath("//*[@id=\"LoginForm\"]/input[2]")).click();
+    driver.findElement(By.xpath("//*[@id=\"LoginForm\"]/input[2]")).clear();
     driver.findElement(By.xpath("//*[@id=\"LoginForm\"]/input[2]")).sendKeys(password);
     driver.findElement(By.xpath("//*[@id=\"LoginForm\"]/input[3]")).click();
   }
@@ -59,10 +63,16 @@ public class GroupCreationTests {
     driver.findElement(By.xpath("//*[@id=\"content\"]/form/input[1]")).click();
   }
 
-  private void fillGroupForm(String name, String header, String footer) {
-    driver.findElement(By.xpath("//*[@id=\"content\"]/form/input[1]")).sendKeys(name);
-    driver.findElement(By.xpath("//*[@id=\"content\"]/form/textarea[1]")).sendKeys(header);
-    driver.findElement(By.xpath("//*[@id=\"content\"]/form/textarea[2]")).sendKeys(footer);
+  private void fillGroupForm(GroupData groupData) {
+    driver.findElement(By.xpath("//*[@id=\"content\"]/form/input[1]")).click();
+    driver.findElement(By.xpath("//*[@id=\"content\"]/form/input[1]")).clear();
+    driver.findElement(By.xpath("//*[@id=\"content\"]/form/input[1]")).sendKeys(groupData.getName());
+    driver.findElement(By.xpath("//*[@id=\"content\"]/form/textarea[1]")).click();
+    driver.findElement(By.xpath("//*[@id=\"content\"]/form/textarea[1]")).clear();
+    driver.findElement(By.xpath("//*[@id=\"content\"]/form/textarea[1]")).sendKeys(groupData.getHeader());
+    driver.findElement(By.xpath("//*[@id=\"content\"]/form/textarea[2]")).click();
+    driver.findElement(By.xpath("//*[@id=\"content\"]/form/textarea[2]")).clear();
+    driver.findElement(By.xpath("//*[@id=\"content\"]/form/textarea[2]")).sendKeys(groupData.getFooter());
   }
 
   private void submitGroupForm() {
