@@ -32,6 +32,7 @@ public class GroupCreationTests {
             .ignoring(NoSuchElementException.class);
     // Open addressbook
     driver.get("http://ab.localhost/index.php");
+    driver.manage().window().setSize(new Dimension(800, 600));
     login("admin", "secret");
   }
 
@@ -45,7 +46,6 @@ public class GroupCreationTests {
   }
 
   private void login(String username, String password) {
-    driver.manage().window().setSize(new Dimension(800, 600));
     driver.findElement(By.xpath("//*[@id=\"LoginForm\"]/input[1]")).click();
     driver.findElement(By.xpath("//*[@id=\"LoginForm\"]/input[1]")).clear();
     driver.findElement(By.xpath("//*[@id=\"LoginForm\"]/input[1]")).sendKeys(username);
