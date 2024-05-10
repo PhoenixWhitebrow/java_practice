@@ -1,4 +1,4 @@
-package pw.tests.addressbook;
+package pw.tests.addressbook.model;
 
 //// Auto-generated class
 // public record GroupData(String name, String header, String footer) {
