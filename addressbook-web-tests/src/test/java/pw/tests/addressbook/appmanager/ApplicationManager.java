@@ -7,7 +7,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.Wait;
-import pw.tests.addressbook.model.GroupData;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.core.IsNot.not;
 import java.time.Duration;
@@ -16,8 +15,13 @@ import java.util.Map;
 import java.util.NoSuchElementException;
 
 public class ApplicationManager {
-    JavascriptExecutor js;
     private WebDriver driver;
+    JavascriptExecutor js;
+
+    // Delegation classes declaration
+    private SessionHelper sessionHelper;
+    private NavigationHelper navigationHelper;
+    private GroupHelper groupHelper;
 
     public void init() {
         // Browser driver
@@ -29,59 +33,26 @@ public class ApplicationManager {
                 .withTimeout(Duration.ofSeconds(30))
                 .pollingEvery(Duration.ofSeconds(5))
                 .ignoring(NoSuchElementException.class);
+        // Delegation classes initialisation
+        sessionHelper = new SessionHelper(driver);
+        navigationHelper = new NavigationHelper(driver);
+        groupHelper = new GroupHelper(driver);
         // Open addressbook
         driver.get("http://ab.localhost/index.php");
-        driver.manage().window().setSize(new Dimension(800, 600));
-        login("admin", "secret");
+        driver.manage().window().setSize(new Dimension(1024, 768));
+        sessionHelper.login("admin", "secret");
     }
 
     public void stop() {
         driver.quit();
     }
 
-    public void login(String username, String password) {
-      driver.findElement(By.xpath("//input[@name='user']")).click();
-      driver.findElement(By.xpath("//input[@name='user']")).clear();
-      driver.findElement(By.xpath("//input[@name='user']")).sendKeys(username);
-      driver.findElement(By.xpath("//input[@name='pass']")).click();
-      driver.findElement(By.xpath("//input[@name='pass']")).clear();
-      driver.findElement(By.xpath("//input[@name='pass']")).sendKeys(password);
-      driver.findElement(By.xpath("//*[@id=\"LoginForm\"]/input[3]")).click();
+    //Delegation methods declaration
+    public GroupHelper getGroupHelper() {
+        return groupHelper;
     }
 
-    public void goToGroups() {
-      driver.findElement(By.xpath("//a[contains(text(),'groups')]")).click();
-    }
-
-    public void initGruopCreation() {
-      driver.findElement(By.xpath("//input[@name='new']")).click();
-    }
-
-    public void fillGroupForm(GroupData groupData) {
-      driver.findElement(By.xpath("//input[@name='group_name']")).click();
-      driver.findElement(By.xpath("//input[@name='group_name']")).clear();
-      driver.findElement(By.xpath("//input[@name='group_name']")).sendKeys(groupData.getName());
-      driver.findElement(By.xpath("//textarea[@name='group_header']")).click();
-      driver.findElement(By.xpath("//textarea[@name='group_header']")).clear();
-      driver.findElement(By.xpath("//textarea[@name='group_header']")).sendKeys(groupData.getHeader());
-      driver.findElement(By.xpath("//textarea[@name='group_footer']")).click();
-      driver.findElement(By.xpath("//textarea[@name='group_footer']")).clear();
-      driver.findElement(By.xpath("//textarea[@name='group_footer']")).sendKeys(groupData.getFooter());
-    }
-
-    public void submitGroupForm() {
-      driver.findElement(By.xpath("//input[@name='submit']")).click();
-    }
-
-    public void returnToGroups() {
-        driver.findElement(By.xpath("//a[contains(text(),'group page')]")).click();
-    }
-
-    public void selectGroup() {
-        driver.findElement(By.xpath("//input[@name='selected[]']")).click();
-    }
-
-    public void deleteSelectedGroups() {
-      driver.findElement(By.xpath("(//input[@name='delete'])[2]")).click();
+    public NavigationHelper getNavigationHelper() {
+        return navigationHelper;
     }
 }

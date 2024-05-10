@@ -6,6 +6,7 @@ import pw.tests.addressbook.appmanager.ApplicationManager;
 
 public class TestBase {
 
+    // Delegation class declaration and initialisation
     protected final ApplicationManager app = new ApplicationManager();
 
     @Before
