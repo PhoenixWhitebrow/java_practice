@@ -20,7 +20,7 @@ public class GroupHelper extends HelperBase {
         type(By.xpath("//textarea[@name='group_footer']"), groupData.getFooter());
     }
 
-    public void submitGroupForm() {
+    public void submitGroupCreation() {
         click(By.xpath("//input[@name='submit']"));
     }
 
@@ -36,4 +36,11 @@ public class GroupHelper extends HelperBase {
         click(By.xpath("(//input[@name='delete'])[2]"));
     }
 
+    public void initGroupModification() {
+        click(By.xpath("(//input[@name='edit'])[2]"));
+    }
+
+    public void submitGroupModification() {
+        click(By.xpath("//input[@name='update']"));
+    }
 }

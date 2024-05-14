@@ -495,6 +495,103 @@
       ],
       "value": ""
     }]
+  }, {
+    "id": "08030aa2-5a63-421a-9d75-1a2896944b95",
+    "name": "testGroupModification",
+    "commands": [{
+      "id": "741a2cef-8928-4ca7-891b-e2ca2e42e976",
+      "comment": "",
+      "command": "open",
+      "target": "/index.php",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "afdfc76e-2efe-4c52-b994-eedb619be8ed",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1680x1025",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "37bb8df5-f258-44f9-9038-84a9b5f403ac",
+      "comment": "",
+      "command": "type",
+      "target": "name=user",
+      "targets": [
+        ["name=user", "name"],
+        ["css=input:nth-child(2)", "css:finder"],
+        ["xpath=//input[@name='user']", "xpath:attributes"],
+        ["xpath=//form[@id='LoginForm']/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "admin"
+    }, {
+      "id": "e6c5f170-3acf-4700-9057-d9e2473b8616",
+      "comment": "",
+      "command": "type",
+      "target": "name=pass",
+      "targets": [
+        ["name=pass", "name"],
+        ["css=input:nth-child(5)", "css:finder"],
+        ["xpath=//input[@name='pass']", "xpath:attributes"],
+        ["xpath=//form[@id='LoginForm']/input[2]", "xpath:idRelative"],
+        ["xpath=//input[2]", "xpath:position"]
+      ],
+      "value": "secret"
+    }, {
+      "id": "0e1b8e35-e0b5-40d5-a8d6-179d8f094ae9",
+      "comment": "",
+      "command": "sendKeys",
+      "target": "name=pass",
+      "targets": [
+        ["name=pass", "name"],
+        ["css=input:nth-child(5)", "css:finder"],
+        ["xpath=//input[@name='pass']", "xpath:attributes"],
+        ["xpath=//form[@id='LoginForm']/input[2]", "xpath:idRelative"],
+        ["xpath=//input[2]", "xpath:position"]
+      ],
+      "value": "${KEY_ENTER}"
+    }, {
+      "id": "66c3eccf-da5e-4b81-837a-08f1b25bd19a",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=groups",
+      "targets": [
+        ["linkText=groups", "linkText"],
+        ["css=.admin > a", "css:finder"],
+        ["xpath=//a[contains(text(),'groups')]", "xpath:link"],
+        ["xpath=//div[@id='nav']/ul/li[3]/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, 'group.php')]", "xpath:href"],
+        ["xpath=//li[3]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'groups')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "f949e587-643b-4753-ab6f-526e2db1de02",
+      "comment": "",
+      "command": "click",
+      "target": "name=selected[]",
+      "targets": [
+        ["name=selected[]", "name"],
+        ["css=.group > input", "css:finder"],
+        ["xpath=//input[@name='selected[]']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/form/span/input", "xpath:idRelative"],
+        ["xpath=//span/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "19c6f8d4-c432-4269-b457-6ef44de0b043",
+      "comment": "",
+      "command": "click",
+      "target": "xpath=(//input[@name='edit'])[2]",
+      "targets": [
+        ["css=input:nth-child(9)", "css:finder"],
+        ["xpath=(//input[@name='edit'])[2]", "xpath:attributes"],
+        ["xpath=//div[@id='content']/form/input[6]", "xpath:idRelative"],
+        ["xpath=//input[6]", "xpath:position"]
+      ],
+      "value": ""
+    }]
   }],
   "suites": [{
     "id": "4d310037-4b21-402a-bd83-ff77221ac7e4",
