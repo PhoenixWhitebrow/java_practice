@@ -21,6 +21,7 @@ public class ApplicationManager {
     private SessionHelper sessionHelper;
     private NavigationHelper navigationHelper;
     private GroupHelper groupHelper;
+    private ContactHelper contactHelper;
 
     public void init() {
         // Browser driver
@@ -36,6 +37,7 @@ public class ApplicationManager {
         sessionHelper = new SessionHelper(driver);
         navigationHelper = new NavigationHelper(driver);
         groupHelper = new GroupHelper(driver);
+        contactHelper = new ContactHelper(driver);
         // Open addressbook
         driver.get("http://ab.localhost/index.php");
         driver.manage().window().setSize(new Dimension(1024, 768));
@@ -53,5 +55,9 @@ public class ApplicationManager {
 
     public NavigationHelper getNavigationHelper() {
         return navigationHelper;
+    }
+
+    public ContactHelper getContactHelper() {
+        return contactHelper;
     }
 }
