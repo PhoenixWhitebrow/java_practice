@@ -1309,6 +1309,53 @@
       "target": "No paticipants selected.",
       "targets": [],
       "value": ""
+    }, {
+      "id": "a226fb37-2ee5-4152-a216-fcd44c9a9b9c",
+      "comment": "",
+      "command": "click",
+      "target": "id=13",
+      "targets": [
+        ["id=13", "id"],
+        ["name=selected[]", "name"],
+        ["css=#\\31 3", "css:finder"],
+        ["xpath=//input[@id='13']", "xpath:attributes"],
+        ["xpath=//table[@id='maintable']/tbody/tr[2]/td/input", "xpath:idRelative"],
+        ["xpath=//td/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "b931fc0b-1e25-4cfe-a180-efd3de9c0834",
+      "comment": "",
+      "command": "click",
+      "target": "xpath=//select[@name='to_group']",
+      "targets": [
+        ["name=to_group", "name"],
+        ["css=select:nth-child(2)", "css:finder"],
+        ["xpath=//select[@name='to_group']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/form[2]/div[4]/select", "xpath:idRelative"],
+        ["xpath=//div[4]/select", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "ca6da943-f96c-422b-869b-57036591861f",
+      "comment": "",
+      "command": "select",
+      "target": "name=to_group",
+      "targets": [],
+      "value": "label=name modified"
+    }, {
+      "id": "df4c3498-1781-4b72-a884-8de100aaf147",
+      "comment": "",
+      "command": "click",
+      "target": "xpath=//input[@name='add']",
+      "targets": [
+        ["name=add", "name"],
+        ["css=.right > input", "css:finder"],
+        ["xpath=//input[@name='add']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/form[2]/div[4]/input", "xpath:idRelative"],
+        ["xpath=//div[4]/input", "xpath:position"]
+      ],
+      "value": ""
     }]
   }],
   "suites": [{
