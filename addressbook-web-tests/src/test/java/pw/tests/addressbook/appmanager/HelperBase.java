@@ -27,4 +27,8 @@ public class HelperBase {
         Select dropdown = new Select(driver.findElement(locator));
         dropdown.selectByValue(option);
     }
+
+    protected void acceptAlert() {
+        driver.switchTo().alert().accept();
+    }
 }

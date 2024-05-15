@@ -12,4 +12,8 @@ public class NavigationHelper extends HelperBase{
     public void goToGroupPage() {
         click(By.xpath("//a[contains(text(),'groups')]"));
     }
+
+    public void goToHomePage() {
+        click(By.xpath("//a[contains(text(),'home')]"));
+    }
 }

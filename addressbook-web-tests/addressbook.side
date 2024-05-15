@@ -1194,6 +1194,122 @@
       ],
       "value": ""
     }]
+  }, {
+    "id": "36cd491f-27eb-4113-a23a-66e1e49599a8",
+    "name": "testContactModification",
+    "commands": [{
+      "id": "c74b5df4-7d04-4330-9fea-596e499e49bb",
+      "comment": "",
+      "command": "open",
+      "target": "/index.php",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "00e638db-f21e-44a4-8ca4-7f1616a69a36",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1680x1025",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "41d00067-10dc-42d7-85f6-5d82c66e5392",
+      "comment": "",
+      "command": "click",
+      "target": "xpath=//a[contains(text(),'home')]",
+      "targets": [
+        ["linkText=home", "linkText"],
+        ["css=#nav li:nth-child(1) > a", "css:finder"],
+        ["xpath=//a[contains(text(),'home')]", "xpath:link"],
+        ["xpath=//div[@id='nav']/ul/li/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, './')]", "xpath:href"],
+        ["xpath=//li/a", "xpath:position"],
+        ["xpath=//a[contains(.,'home')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "f366df2e-921c-4dc0-952d-aea6f44b2360",
+      "comment": "",
+      "command": "click",
+      "target": "xpath=//table[@id='maintable']/tbody/tr[2]/td/input",
+      "targets": [
+        ["id=11", "id"],
+        ["name=selected[]", "name"],
+        ["css=#\\31 1", "css:finder"],
+        ["xpath=//input[@id='11']", "xpath:attributes"],
+        ["xpath=//table[@id='maintable']/tbody/tr[2]/td/input", "xpath:idRelative"],
+        ["xpath=//td/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "61a691e5-0740-4443-ab95-185d9425c7d0",
+      "comment": "",
+      "command": "click",
+      "target": "xpath=//table[@id='maintable']/tbody/tr[2]/td[8]/a/img",
+      "targets": [
+        ["css=.center:nth-child(8) img", "css:finder"],
+        ["xpath=//img[@alt='Edit']", "xpath:img"],
+        ["xpath=//table[@id='maintable']/tbody/tr[2]/td[8]/a/img", "xpath:idRelative"],
+        ["xpath=//td[8]/a/img", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "922e02a9-5d43-4e4c-a71f-6c006392621d",
+      "comment": "",
+      "command": "click",
+      "target": "xpath=(//input[@name='update'])[2]",
+      "targets": [
+        ["css=input:nth-child(86)", "css:finder"],
+        ["xpath=(//input[@name='update'])[2]", "xpath:attributes"],
+        ["xpath=//div[@id='content']/form/input[22]", "xpath:idRelative"],
+        ["xpath=//input[22]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "9b1b3abf-b52f-4194-8660-070308272a64",
+      "comment": "",
+      "command": "click",
+      "target": "xpath=//div[@id='content']/div",
+      "targets": [
+        ["css=.msgbox", "css:finder"],
+        ["xpath=//div[@id='content']/div", "xpath:idRelative"],
+        ["xpath=//div[4]/div", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "1516a221-c78f-4c36-a252-0c147bbf92d5",
+      "comment": "",
+      "command": "click",
+      "target": "xpath=//a[contains(text(),'home page')]",
+      "targets": [
+        ["linkText=home page", "linkText"],
+        ["css=i > a", "css:finder"],
+        ["xpath=//a[contains(text(),'home page')]", "xpath:link"],
+        ["xpath=//div[@id='content']/div/i/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, 'index.php')]", "xpath:href"],
+        ["xpath=//i/a", "xpath:position"],
+        ["xpath=//a[contains(.,'home page')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "8152240e-c2a2-4ff0-aca1-3e842edc2209",
+      "comment": "",
+      "command": "click",
+      "target": "xpath=//input[@value='Delete']",
+      "targets": [
+        ["css=.left:nth-child(8) > input", "css:finder"],
+        ["xpath=//input[@value='Delete']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/form[2]/div[2]/input", "xpath:idRelative"],
+        ["xpath=//div[2]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "9b0fb707-f24b-4d1a-a610-d7452fecdfca",
+      "comment": "",
+      "command": "assertAlert",
+      "target": "No paticipants selected.",
+      "targets": [],
+      "value": ""
+    }]
   }],
   "suites": [{
     "id": "4d310037-4b21-402a-bd83-ff77221ac7e4",

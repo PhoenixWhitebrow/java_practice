@@ -5,15 +5,14 @@ import pw.tests.addressbook.model.ContactData;
 import pw.tests.addressbook.model.Date;
 
 public class ContactCreationTests extends TestBase {
-
     @Test
-    public void testGroupCreation() {
+    public void testContactCreation() {
 
         ContactData contactData = new ContactData();
-        contactData.firstName = "firstName";
-        contactData.middleName = "middleName";
-        contactData.lastName = "lastName";
-        contactData.nickname = "nickname";
+        contactData.firstName = "fName";
+        contactData.middleName = "mName";
+        contactData.lastName = "lName";
+        contactData.nickname = "nName";
         contactData.title = "title";
         contactData.company = "company";
         contactData.address = "address";
@@ -34,6 +33,7 @@ public class ContactCreationTests extends TestBase {
 
         app.getContactHelper().initContactCreation();
         app.getContactHelper().fillContactForm(contactData);
+        app.getContactHelper().selectContactGroup(contactData);
         app.getContactHelper().submitContactCreation();
         app.getContactHelper().returnToHomePage();
     }

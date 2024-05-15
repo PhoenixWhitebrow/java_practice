@@ -36,10 +36,18 @@ public class ContactHelper extends HelperBase {
         select(By.xpath("//select[@name='aday']"), contactData.getAnniversary().day);
         select(By.xpath("//select[@name='amonth']"), contactData.getAnniversary().month);
         type(By.xpath("//input[@name='ayear']"), contactData.getAnniversary().year);
-        select(By.xpath("//select[@name='new_group']"), contactData.getGroup());
         type(By.xpath("//textarea[@name='address2']"), contactData.getAddress2());
         type(By.xpath("//input[@name='phone2']"), contactData.getPhone2());
         type(By.xpath("//textarea[@name='notes']"), contactData.getNotes());
+    }
+
+    public void selectContactGroup(ContactData contactData) {
+        select(By.xpath("//select[@name='new_group']"), contactData.getGroup());
+    }
+
+    public void addContactToGroup (ContactData contactData) {
+        select(By.xpath("//select[@name='to_group']"), contactData.getGroup());
+        click(By.xpath("//input[@name='add']"));
     }
 
     public void submitContactCreation() {
@@ -48,5 +56,22 @@ public class ContactHelper extends HelperBase {
 
     public void returnToHomePage() {
         click(By.xpath("//a[contains(text(),'home page')]"));
+    }
+
+    public void selectContact() {
+        click(By.xpath("//table[@id='maintable']/tbody/tr[2]/td/input"));
+    }
+
+    public void deleteSelectedContacts() {
+        click(By.xpath("//input[@value='Delete']"));
+        acceptAlert();
+    }
+
+    public void initContactModification() {
+        click(By.xpath("//table[@id='maintable']/tbody/tr[2]/td[8]/a/img"));
+    }
+
+    public void submitContactModification() {
+        click(By.xpath("(//input[@name='update'])[2]"));
     }
 }
