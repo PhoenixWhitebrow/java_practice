@@ -12,6 +12,8 @@ import java.time.Duration;
 import java.util.Map;
 import java.util.HashMap;
 import java.util.NoSuchElementException;
+import java.util.Objects;
+
 import org.openqa.selenium.Dimension;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.core.IsNot.not;
@@ -35,11 +37,11 @@ public class ApplicationManager {
 
     public void init() {
         // Browser driver
-        if (browser == Browser.FIREFOX) {
+        if (browser.equals(Browser.FIREFOX)) {
             driver = new FirefoxDriver();
-        } else if (browser == Browser.CHROME) {
+        } else if (browser.equals(Browser.CHROME)) {
             driver = new ChromeDriver();
-        } else if (browser == Browser.SAFARI) {
+        } else if (browser.equals(Browser.SAFARI)) {
             driver = new SafariDriver();
         }
         js = (JavascriptExecutor) driver;
