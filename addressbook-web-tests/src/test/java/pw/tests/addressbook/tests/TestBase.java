@@ -7,17 +7,17 @@ import pw.tests.addressbook.appmanager.ApplicationManager;
 
 public class TestBase {
 
-    // Delegation class declaration and initialisation
-    protected final ApplicationManager app = new ApplicationManager(Browser.CHROME);
+  // Delegation class declaration and initialisation
+  protected final ApplicationManager app = new ApplicationManager(Browser.CHROME);
 
-    @Before
-    public void setUp() {
-        app.init();
-    }
+  @Before
+  public void setUp() {
+    app.init();
+  }
 
-    @After
-    public void tearDown() {
-        app.stop();
-    }
+  @After
+  public void tearDown() {
+    app.stop();
+  }
 
 }

@@ -20,62 +20,62 @@ import static org.hamcrest.core.IsNot.not;
 
 public class ApplicationManager {
 
-    private WebDriver driver;
-    JavascriptExecutor js;
+  private WebDriver driver;
+  JavascriptExecutor js;
 
-    // Constructor
-    private Browser browser;
-    public ApplicationManager(Browser browser) {
-        this.browser = browser;
+  // Constructor
+  private Browser browser;
+  public ApplicationManager(Browser browser) {
+    this.browser = browser;
+  }
+
+  // Delegation classes declaration
+  private SessionHelper sessionHelper;
+  private NavigationHelper navigationHelper;
+  private GroupHelper groupHelper;
+  private ContactHelper contactHelper;
+
+  public void init() {
+    // Browser driver
+    if (browser.equals(Browser.FIREFOX)) {
+      driver = new FirefoxDriver();
+    } else if (browser.equals(Browser.CHROME)) {
+      driver = new ChromeDriver();
+    } else if (browser.equals(Browser.SAFARI)) {
+      driver = new SafariDriver();
     }
+    js = (JavascriptExecutor) driver;
+    Map<String, Object> vars = new HashMap<String, Object>();
+    // Timeouts
+    Wait<WebDriver> wait = new FluentWait<WebDriver>(driver)
+        .withTimeout(Duration.ofSeconds(30))
+        .pollingEvery(Duration.ofSeconds(5))
+        .ignoring(NoSuchElementException.class);
+    // Delegation classes initialisation
+    sessionHelper = new SessionHelper(driver);
+    navigationHelper = new NavigationHelper(driver);
+    groupHelper = new GroupHelper(driver);
+    contactHelper = new ContactHelper(driver);
+    // Open addressbook
+    driver.get("http://ab.localhost/index.php");
+    //driver.manage().window().setSize(new Dimension(1024, 768));
+    sessionHelper.login("admin", "secret");
+  }
 
-    // Delegation classes declaration
-    private SessionHelper sessionHelper;
-    private NavigationHelper navigationHelper;
-    private GroupHelper groupHelper;
-    private ContactHelper contactHelper;
+  public void stop() {
+    driver.quit();
+  }
 
-    public void init() {
-        // Browser driver
-        if (browser.equals(Browser.FIREFOX)) {
-            driver = new FirefoxDriver();
-        } else if (browser.equals(Browser.CHROME)) {
-            driver = new ChromeDriver();
-        } else if (browser.equals(Browser.SAFARI)) {
-            driver = new SafariDriver();
-        }
-        js = (JavascriptExecutor) driver;
-        Map<String, Object> vars = new HashMap<String, Object>();
-        // Timeouts
-        Wait<WebDriver> wait = new FluentWait<WebDriver>(driver)
-                .withTimeout(Duration.ofSeconds(30))
-                .pollingEvery(Duration.ofSeconds(5))
-                .ignoring(NoSuchElementException.class);
-        // Delegation classes initialisation
-        sessionHelper = new SessionHelper(driver);
-        navigationHelper = new NavigationHelper(driver);
-        groupHelper = new GroupHelper(driver);
-        contactHelper = new ContactHelper(driver);
-        // Open addressbook
-        driver.get("http://ab.localhost/index.php");
-        //driver.manage().window().setSize(new Dimension(1024, 768));
-        sessionHelper.login("admin", "secret");
-    }
+  //Delegation methods declaration
+  public GroupHelper getGroupHelper() {
+    return groupHelper;
+  }
 
-    public void stop() {
-        driver.quit();
-    }
+  public NavigationHelper getNavigationHelper() {
+    return navigationHelper;
+  }
 
-    //Delegation methods declaration
-    public GroupHelper getGroupHelper() {
-        return groupHelper;
-    }
-
-    public NavigationHelper getNavigationHelper() {
-        return navigationHelper;
-    }
-
-    public ContactHelper getContactHelper() {
-        return contactHelper;
-    }
+  public ContactHelper getContactHelper() {
+    return contactHelper;
+  }
 }
