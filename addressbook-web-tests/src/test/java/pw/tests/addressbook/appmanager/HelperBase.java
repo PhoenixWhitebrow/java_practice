@@ -1,8 +1,6 @@
 package pw.tests.addressbook.appmanager;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.Select;
 
 public class HelperBase {
@@ -30,10 +28,28 @@ public class HelperBase {
   protected void select(By locator, String option) {
     driver.findElement(locator).click();
     Select dropdown = new Select(driver.findElement(locator));
-    dropdown.selectByValue(option);
+    dropdown.selectByVisibleText(option);
   }
 
   protected void acceptAlert() {
     driver.switchTo().alert().accept();
+  }
+
+  protected boolean isAlertPresent() {
+    try {
+      driver.switchTo().alert();
+      return true;
+    } catch (NoAlertPresentException exception) {
+      return false;
+    }
+  }
+
+  protected boolean isElementPresent(By locator) {
+    try {
+      driver.findElement(locator);
+      return true;
+    } catch (NoSuchElementException exception) {
+      return false;
+    }
   }
 }

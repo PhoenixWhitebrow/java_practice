@@ -26,14 +26,13 @@ public class ContactCreationTests extends TestBase {
     contactData.homepage = "homepage";
     contactData.birthday = new Date(29, 11, 1991);
     contactData.anniversary = new Date(14, 5, 2024);
-    contactData.group = "[none]";
+    contactData.group = "test1";
     contactData.address2 = "address2";
     contactData.phone2 = "phone2";
     contactData.notes = "notes";
 
     app.getContactHelper().initContactCreation();
-    app.getContactHelper().fillContactForm(contactData);
-    app.getContactHelper().selectContactGroup(contactData);
+    app.getContactHelper().fillContactForm(contactData, true);
     app.getContactHelper().submitContactCreation();
     app.getContactHelper().returnToHomePage();
   }

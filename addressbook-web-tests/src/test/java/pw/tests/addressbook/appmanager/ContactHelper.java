@@ -1,5 +1,6 @@
 package pw.tests.addressbook.appmanager;
 
+import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import pw.tests.addressbook.model.ContactData;
@@ -14,7 +15,8 @@ public class ContactHelper extends HelperBase {
     click(By.xpath("//a[contains(text(),'add new')]"));
   }
 
-  public void fillContactForm(ContactData contactData) {
+  public void fillContactForm(ContactData contactData, boolean isCreation) {
+
     type(By.xpath("//input[@name='firstname']"), contactData.getFirstName());
     type(By.xpath("//input[@name='middlename']"), contactData.getMiddleName());
     type(By.xpath("//input[@name='lastname']"), contactData.getLastName());
@@ -39,10 +41,12 @@ public class ContactHelper extends HelperBase {
     type(By.xpath("//textarea[@name='address2']"), contactData.getAddress2());
     type(By.xpath("//input[@name='phone2']"), contactData.getPhone2());
     type(By.xpath("//textarea[@name='notes']"), contactData.getNotes());
-  }
 
-  public void selectContactGroup(ContactData contactData) {
-    select(By.xpath("//select[@name='new_group']"), contactData.getGroup());
+    if (isCreation) {
+      select(By.xpath("//select[@name='new_group']"), contactData.getGroup());
+    } else {
+      Assert.assertFalse(isElementPresent(By.xpath("//select[@name='new_group']")));
+    }
   }
 
   public void addContactToGroup (ContactData contactData) {
@@ -64,7 +68,11 @@ public class ContactHelper extends HelperBase {
 
   public void deleteSelectedContacts() {
     click(By.xpath("//input[@value='Delete']"));
-    acceptAlert();
+    if (isAlertPresent()) {
+      acceptAlert();
+    } else {
+      Assert.assertTrue(isAlertPresent());
+    }
   }
 
   public void initContactModification() {

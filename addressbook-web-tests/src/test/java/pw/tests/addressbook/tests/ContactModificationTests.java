@@ -26,14 +26,14 @@ public class ContactModificationTests extends TestBase {
     contactData.homepage = "homepage_modified";
     contactData.birthday = new Date(30, 12, 1992);
     contactData.anniversary = new Date(15, 5, 2024);
-    // contactData.group = "name modified";
+    contactData.group = null;
     contactData.address2 = "address2_modified";
     contactData.phone2 = "phone2_modified";
     contactData.notes = "notes_modified";
 
     app.getNavigationHelper().goToHomePage();
     app.getContactHelper().initContactModification();
-    app.getContactHelper().fillContactForm(contactData);
+    app.getContactHelper().fillContactForm(contactData, false);
     app.getContactHelper().submitContactModification();
     app.getContactHelper().returnToHomePage();
   }
