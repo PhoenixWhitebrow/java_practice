@@ -20,9 +20,7 @@ public class NavigationHelper extends HelperBase{
   }
 
   public void goToHomePage() {
-    if (isElementPresent(By.xpath("//*[@id=\"maintable\"]"))) {
-      return;
-    } else {
+    if (!isElementPresent(By.xpath("//*[@id=\"maintable\"]"))) {
       click(By.xpath("//a[contains(text(),'home')]"));
     }
   }
