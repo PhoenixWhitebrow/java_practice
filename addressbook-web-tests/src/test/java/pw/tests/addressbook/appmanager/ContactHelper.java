@@ -24,7 +24,7 @@ public class ContactHelper extends HelperBase {
     type(By.xpath("//input[@name='title']"), contactData.getTitle());
     type(By.xpath("//input[@name='company']"), contactData.getCompany());
     type(By.xpath("//textarea[@name='address']"), contactData.getAddress());
-    type(By.xpath("//div[@id='content']/form/input[10]"), contactData.getPhoneHome());
+    type(By.xpath("//input[@name='home']"), contactData.getPhoneHome());
     type(By.xpath("//input[@name='mobile']"), contactData.getPhoneMobile());
     type(By.xpath("//input[@name='work']"), contactData.getPhoneWork());
     type(By.xpath("//input[@name='fax']"), contactData.getFax());
@@ -32,7 +32,7 @@ public class ContactHelper extends HelperBase {
     type(By.xpath("//input[@name='email2']"), contactData.getEmail2());
     type(By.xpath("//input[@name='email3']"), contactData.getEmail3());
     type(By.xpath("//input[@name='homepage']"), contactData.getHomepage());
-    select(By.xpath("//select[@name='bday']"),contactData.getBirthday().day);
+    select(By.xpath("//select[@name='bday']"), contactData.getBirthday().day);
     select(By.xpath("//select[@name='bmonth']"), contactData.getBirthday().month);
     type(By.xpath("//input[@name='byear']"), contactData.getBirthday().year);
     select(By.xpath("//select[@name='aday']"), contactData.getAnniversary().day);
@@ -81,5 +81,16 @@ public class ContactHelper extends HelperBase {
 
   public void submitContactModification() {
     click(By.xpath("(//input[@name='update'])[2]"));
+  }
+
+  public void createContact(ContactData contactData, boolean isCreation) {
+    initContactCreation();
+    fillContactForm(contactData, isCreation);
+    submitContactCreation();
+    returnToHomePage();
+  }
+
+  public boolean isThereAContact() {
+    return isElementPresent(By.xpath("//input[@name='selected[]']"));
   }
 }

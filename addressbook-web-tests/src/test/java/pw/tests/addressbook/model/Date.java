@@ -8,6 +8,8 @@ public class Date {
   public String month;
   public String year;
 
+  public Date() {}
+
   public Date(int day, int month, int year) {
     this.day = String.valueOf(day);
     this.month = new DateFormatSymbols().getMonths()[month-1];

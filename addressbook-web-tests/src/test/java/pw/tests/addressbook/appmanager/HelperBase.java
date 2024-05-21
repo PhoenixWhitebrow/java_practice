@@ -26,9 +26,14 @@ public class HelperBase {
   }
 
   protected void select(By locator, String option) {
-    driver.findElement(locator).click();
-    Select dropdown = new Select(driver.findElement(locator));
-    dropdown.selectByVisibleText(option);
+    if (option != null) {
+      String existingSelection = driver.findElement(locator).getAttribute("value");
+      if (!option.equals(existingSelection)) {
+        driver.findElement(locator).click();
+        Select dropdown = new Select(driver.findElement(locator));
+        dropdown.selectByVisibleText(option);
+      }
+    }
   }
 
   protected void acceptAlert() {
