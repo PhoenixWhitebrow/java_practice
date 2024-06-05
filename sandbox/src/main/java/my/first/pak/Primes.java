@@ -21,7 +21,8 @@ public class Primes {
   }
 
   public static boolean isPrimeFast(int n){
-    for (int i = 2; i < n / 2; i++) {
+    int m = (int) Math.sqrt(n);
+    for (int i = 2; i < m / 2; i++) {
       if (n % i == 0) {
         return false;
       }
