@@ -8,7 +8,7 @@ public class PrimeTests {
   @Test
   public void testPrime() {
     int n = Integer.MAX_VALUE;
-    Assert.assertTrue(Primes.isPrime(n));
+    Assert.assertTrue(Primes.isPrimeWhile(n));
   }
 
   @Test
